@@ -30,7 +30,7 @@ pipeline {
                 echo 'Testing2..'
                 //setBuildStatus("In Progress","PENDING",jobContext,"${gitCommit}")
                 //githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'something test', description: 'This commit is being built',  status: 'PENDING'
-                githubNotify context: 'something test', description: 'This commit is being built',  status: 'PENDING'
+                //githubNotify context: 'something test', description: 'This commit is being built',  status: 'PENDING'
             }
         }
     }
