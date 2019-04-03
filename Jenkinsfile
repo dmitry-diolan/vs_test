@@ -1,3 +1,4 @@
+/*
 def setBuildStatus(String message, String state, String context, String sha) {
     step([
         $class: "GitHubCommitStatusSetter",
@@ -9,7 +10,7 @@ def setBuildStatus(String message, String state, String context, String sha) {
         statusResultSource: [$class: "ConditionalStatusResultSource", results: [[$class: "AnyBuildResult", message: message, state: state]] ]
     ]);
 }
-
+*/
 pipeline {
     agent any
     
@@ -27,7 +28,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing2..'
-                setBuildStatus("In Progress","PENDING",jobContext,"${gitCommit}")
+                //setBuildStatus("In Progress","PENDING",jobContext,"${gitCommit}")
+                //githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'something test', description: 'This commit is being built',  status: 'PENDING'
+                githubNotify context: 'something test', description: 'This commit is being built',  status: 'PENDING'
             }
         }
     }
