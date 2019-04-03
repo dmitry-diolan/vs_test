@@ -23,7 +23,7 @@ pipeline {
             steps {
                 githubNotify context: 'Building', description: 'This commit is being built',  status: 'PENDING'
                 echo 'Building2..'
-                sleep(1000)
+                sleep 3
                 githubNotify context: 'Building', description: 'Build succeeded',  status: 'SUCCESS'
                 
             }
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 githubNotify context: 'Testing', description: 'This commit is being test',  status: 'PENDING'
                 echo 'Testing2..'
-                sleep(1000)
+                sleep 3
                 githubNotify context: 'Testing', description: 'Test succeeded',  status: 'SUCCESS'
                 //setBuildStatus("In Progress","PENDING",jobContext,"${gitCommit}")
                 //githubNotify gitApiUrl: 'https://github.mycompany.com/api/v3', context: 'something test', description: 'This commit is being built',  status: 'PENDING'
