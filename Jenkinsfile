@@ -22,7 +22,7 @@ pipeline {
         stage('Build') {
             steps {
                 githubNotify context: 'Building', description: 'This commit is being built',  status: 'PENDING'
-                bat 'call Root\Project\build.bat'
+                bat 'Root\\Project\\build.bat'
                 githubNotify context: 'Building', description: 'Build succeeded',  status: 'SUCCESS'
                 
             }
