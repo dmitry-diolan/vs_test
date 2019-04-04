@@ -31,7 +31,7 @@ pipeline {
 						echo 'Build succeeded'
 					} else {
 						echo 'Build failed'
-						archiveArifacts 'build_output.log'
+						archiveArtifacts 'build_output.log'
 					}
 					
 				}
