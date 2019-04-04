@@ -11,6 +11,9 @@ def setBuildStatus(String message, String state, String context, String sha) {
     ]);
 }
 */
+
+def buildStat
+
 pipeline {
     agent any
     
@@ -22,8 +25,16 @@ pipeline {
         stage('Build') {
             steps {
                 githubNotify context: 'Building', description: 'This commit is being built',  status: 'PENDING'
-                echo 'Building2..'
-                sleep 3
+				script {
+					buildStat = bat(script: 'Root\\Project\\build.bat', returnStatus: true)
+					if (buildStat == 0) {
+						echo 'Build succeeded'
+					} else {
+						echo 'Build failed'
+						archiveArtifacts 'build_output.log'
+					}
+					
+				}
                 githubNotify context: 'Building', description: 'Build succeeded',  status: 'SUCCESS'
                 
             }
