@@ -27,7 +27,12 @@ pipeline {
                 githubNotify context: 'Building', description: 'This commit is being built',  status: 'PENDING'
 				script {
 					buildStat = bat(script: 'Root\\Project\\build.bat', returnStatus: true)
-					echo buildStat
+					if (buildStat == 0) {
+						echo 'Build succeeded'
+					} else {
+						echo 'Build failed'
+					}
+					
 				}
                 githubNotify context: 'Building', description: 'Build succeeded',  status: 'SUCCESS'
                 
