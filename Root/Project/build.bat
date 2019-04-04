@@ -1,7 +1,4 @@
 echo off
-IF [%1]==[] (
-echo version parameter missing
-goto error )
 
 set devenv="C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe"
 del build_output.log
