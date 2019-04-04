@@ -22,8 +22,7 @@ pipeline {
         stage('Build') {
             steps {
                 githubNotify context: 'Building', description: 'This commit is being built',  status: 'PENDING'
-                echo 'Building2..'
-                sleep 3
+                bat 'Root\Project\build.bat'
                 githubNotify context: 'Building', description: 'Build succeeded',  status: 'SUCCESS'
                 
             }
