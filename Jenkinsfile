@@ -22,7 +22,8 @@ pipeline {
         stage('Build') {
             steps {
                 githubNotify context: 'Building', description: 'This commit is being built',  status: 'PENDING'
-                bat 'Root\\Project\\build.bat'
+                def buildStat = bat(script: 'Root\\Project\\build.bat', returnStatus: true)
+				echo buildStat
                 githubNotify context: 'Building', description: 'Build succeeded',  status: 'SUCCESS'
                 
             }
